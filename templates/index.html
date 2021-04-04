@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} Welcome {% endblock %}
+
+{% block content %} 
+
+    <form action="/get-currency" method="GET">
+        <label for="c-from">Convert From</label>
+        <input id="c-from" type="text" name="from">
+        <label for="c-to">Convert To</label>
+        <input id="c-to" type="text" name="to">
+        <label for="amount">Amount</label>
+        <input id="amount" type="number" name="amount">
+        <button>Convert</button>
+    </form>
+
+{% endblock %}
