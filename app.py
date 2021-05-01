@@ -25,9 +25,12 @@ def requested_curency():
 
     rates = c.get_rates('USD')
     
-    if validity(rates, from_curency, to_curency, amount) != True:
-        flash(f"{validity(rates, from_curency, to_curency, amount)}")
+    errorsList = validity(rates, from_curency, to_curency, amount)
+    if len(errorsList) > 0:
+        for err in errorsList:
+            flash(f"{err}")
         return redirect(url_for('main_page'))
+    
 
     simbol = codes.get_symbol(to_curency)
     convert = c.convert(from_curency, to_curency, float(amount))
